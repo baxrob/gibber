@@ -20,11 +20,27 @@ $(document).ready(function() {
 
     //
     $('body').append(
+        $('<style/>').text(
+            'body { font-family: -webkit-small-control, arial, verdana, '
+            + '    helvetica, sans-serif; }'
+            + 'div { font-size: 1em; }'
+            + 'input { '
+            + '    font-size: 1em;'
+            + '    font-family: arial, verdana, helvetica, sans-serif;'
+            + '}'
+            + ''
+        )
+    ).append(
+        // TODO: textarea: enter issue sh +== submit or raw?
         //$('<textarea/>').attr({
         $('<input/>').attr({
             id: 'syllee'
         }).css({
-            width: '82%'
+            // 176 chars on mba11
+            //width: '82%'
+            // 134 chars on mba11
+            width: '62%'
+            // TODO: textarea, see above
             //, height: '28%'
         }).on('change', function() {
             $('#gibberee').text(g.split(this.value));
