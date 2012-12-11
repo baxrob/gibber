@@ -47,7 +47,7 @@ $(document).ready(function() {
         }).text(shuffledSylls)
     );
 
-    $('#gibberee').select();
+    $('#syllee').select();
 
 });
 
