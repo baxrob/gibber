@@ -1,6 +1,6 @@
-// TODO: require(
 "use strict";
 
+// TODO: use require.js
 $script([
     '../lib/jquery-1.7.2.min', 
 ], function() {
@@ -120,7 +120,13 @@ var Gibber = {
     split: function(str) {
         var vowels = this.vowelCount(str);
         //console.log(str, vowels);
-        if (vowels < 2) {
+        //if (str == 'thing') console.lot(str, vowels);
+        if (
+            vowels < 2                  // Every syllable needs a vowel
+            || str.length <= 2          // ???
+            || str.length == vowels     // All chars being vowels connotes
+                                        //   a complete syllabic 
+        ) {
             return str;
         } else {
             var length = str.length,
