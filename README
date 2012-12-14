@@ -1,5 +1,13 @@
-[stub of an old algorithm, devised for the purpose of obfuscating and/or generating language - see the shell script for now.]
+my old pseudo-syllable shuffler
 
+
+gibber.sh
 # simple usage with http://code.google.com/p/lorem/
 # lorem.py contains a good deal of non-ascii.  try:
-# ./gibber.sh $(lib/lorem.py -n N -q [0-13]) 2> /dev/null
+
+./gibber.sh $(lib/lorem.py -n N -q [0-13]) 2> /dev/null
+
+
+gibber.js
+demo: http://proto.blandhand.net/gib
+
