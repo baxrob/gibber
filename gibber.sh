@@ -56,6 +56,7 @@ function split {
         left_half="${1:0:center}"
         right_half="${1:center}"
 
+        # FIXME: second argument?
         left_ratio=$(vowel_ratio $left_half 2)
         right_ratio=$(vowel_ratio $right_half 2)
 
