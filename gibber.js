@@ -31,7 +31,7 @@ $(document).ready(function() {
             + ''
         )
     ).append(
-        // TODO: textarea: enter issue sh +== submit or raw?
+        // TODO: textarea: enter issue sh += submit or raw?
         //$('<textarea/>').attr({
         $('<input/>').attr({
             id: 'syllee'
@@ -75,7 +75,7 @@ var Gibber = {
     gib: function(word) {
         return this.shuffle(word);
     },
-    vowelList: ['a', 'e', 'i', 'o', 'u', 'y'],
+    vowelList: ['a', 'e', 'i', 'o', 'u'],//, 'y'],
     isVowel: function(char) {
         return char in vowelList;
     },
@@ -117,44 +117,59 @@ var Gibber = {
             return vowels / consonants;
         }
     },
-    split: function(str) {
-        var vowels = this.vowelCount(str);
-        //console.log(str, vowels);
-        //if (str == 'thing') console.lot(str, vowels);
+    split: function(sylls) {
+        var vowels = this.vowelCount(sylls);
+        //console.log(sylls, vowels);
+        //if (sylls == 'thing') console.lot(sylls, vowels);
         if (
             vowels < 2                  // Every syllable needs a vowel
-            || str.length <= 2          // ???
-            || str.length == vowels     // All chars being vowels connotes
+            || sylls.length <= 2          // ???
+            || sylls.length == vowels     // All chars being vowels connotes
                                         //   a complete syllabic 
         ) {
-            return str;
+            //console.log(sylls);
+            return sylls;
         } else {
-            var length = str.length,
+            var length = sylls.length,
                 center = length / 2,
-                leftHalf = str.slice(0, center),
-                rightHalf = str.slice(center);
+                leftHalf = sylls.slice(0, center),
+                rightHalf = sylls.slice(center);
             var leftRatio = this.vowelRatio(leftHalf),
                 rightRatio = this.vowelRatio(rightHalf);
 
             if (leftRatio < rightRatio) {
                 center++;
-                leftHalf = str.slice(0, center);
-                rightHalf = str.slice(center);
+                leftHalf = sylls.slice(0, center);
+                rightHalf = sylls.slice(center);
             }
+            /*
+            console.log(
+                'src:', sylls, 
+                'left:', this.split(leftHalf),
+                'right:', this.split(rightHalf)
+            );
+            */
             return this.split(leftHalf) + ' ' + this.split(rightHalf);
         }
     },
+            
     shuffle: function(textStruct, spec) {
-         if (Object.prototype.toString.call(textStruct) == '[object String]') {
-             //return this.split(textStruct);
-             return this.shuffleArray(this.split(textStruct).split(' '));
-         } else {
-             var combinedSplit = '';
-             textStruct.forEach(function(textStruct, idx) {
-                combinedSplit += this.shuffle(textStruct);
-             }, this);
-             return combinedSplit;
-         }
+        if (Object.prototype.toString.call(textStruct) == '[object String]') {
+            //return this.split(textStruct);
+            var words = this.split(textStruct).split(' ');
+            words = words.forEach(function(x) {
+                console.log(x.replace(/^\s+|\s+$/g, ''));
+                return x.replace(/^\s+|\s+$/g, '');
+            });
+            console.log(words);
+            return this.shuffleArray(words);
+        } else {
+            var combinedSplit = '';
+            textStruct.forEach(function(textStruct, idx) {
+               combinedSplit += this.shuffle(textStruct);
+            }, this);
+            return combinedSplit;
+        }
     },
     shuffleArray: function(inputList) {
         var unmovedList = inputList.slice(0),
