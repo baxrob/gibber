@@ -39,7 +39,7 @@ $(document).ready(function() {
             // 176 chars on mba11
             //width: '82%'
             // 134 chars on mba11
-            width: '62%'
+            width: '15em'
             // TODO: textarea, see above
             //, height: '28%'
         }).on('change', function() {
@@ -157,11 +157,12 @@ var Gibber = {
         if (Object.prototype.toString.call(textStruct) == '[object String]') {
             //return this.split(textStruct);
             var words = this.split(textStruct).split(' ');
-            words = words.forEach(function(x) {
-                console.log(x.replace(/^\s+|\s+$/g, ''));
+            //console.log(words);
+            words = words.map(function(x) {
+                //console.log(x.replace(/^\s+|\s+$/g, ''));
                 return x.replace(/^\s+|\s+$/g, '');
             });
-            console.log(words);
+            //console.log(words);
             return this.shuffleArray(words);
         } else {
             var combinedSplit = '';
