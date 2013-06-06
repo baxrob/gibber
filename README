@@ -1,10 +1,4 @@
-my old pseudo-syllable shuffler:
-
-oh no
-
-http://proto.blandhand.net/gib/#sunvlautzu
-(u shood typ shz int and/or just hit refresh again)
-
+pseudo-syllable shuffler:
 
 the syllabizer algorithm needs tuning
 i lost the scheme version i wrote yrs ago
@@ -20,5 +14,6 @@ gibber.sh
 
 
 gibber.js
-demo: http://proto.blandhand.net/gib
+
+http://proto.blandhand.net/gib/#sunvlautzu
 
