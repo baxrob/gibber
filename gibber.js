@@ -2,7 +2,7 @@
 
 // TODO: use require.js
 $script([
-    '../lib/jquery-1.7.2.min', 
+    '../lib/jquery/jquery-1.7.2.min', 
 ], function() {
 //
 
