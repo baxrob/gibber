@@ -17,6 +17,7 @@ $(document).ready(function() {
         shuffledSylls = g.gib(word);
 
     //console.log(g.gib('antidisestablishmentarianism'));
+    window.g = g;
 
     //
     $('body').append(
@@ -39,7 +40,7 @@ $(document).ready(function() {
             // 176 chars on mba11
             //width: '82%'
             // 134 chars on mba11
-            width: '15em'
+            width: '45em'
             // TODO: textarea, see above
             //, height: '28%'
         }).on('change', function() {
@@ -119,7 +120,7 @@ var Gibber = {
     },
     split: function(sylls) {
         var vowels = this.vowelCount(sylls);
-        //console.log(sylls, vowels);
+        console.log(sylls, vowels);
         //if (sylls == 'thing') console.lot(sylls, vowels);
         if (
             vowels < 2                  // Every syllable needs a vowel
@@ -154,6 +155,7 @@ var Gibber = {
     },
             
     shuffle: function(textStruct, spec) {
+        console.log('SHUF:', textStruct, spec, '|', Object.prototype.toString.call(textStruct));
         if (Object.prototype.toString.call(textStruct) == '[object String]') {
             //return this.split(textStruct);
             var words = this.split(textStruct).split(' ');
@@ -165,6 +167,7 @@ var Gibber = {
             //console.log(words);
             return this.shuffleArray(words);
         } else {
+            // XXX: should test for Array
             var combinedSplit = '';
             textStruct.forEach(function(textStruct, idx) {
                combinedSplit += this.shuffle(textStruct);
